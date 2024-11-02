@@ -1,0 +1,14 @@
+.alert {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border: 1px solid var(--gray-150);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 100%;
+  background-color: var(--orange-400);
+}

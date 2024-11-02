@@ -1,0 +1,9 @@
+export const TEST_IDS = {
+  APP: "APP",
+  ALERT: "ALERT",
+  BUTTON: "BUTTON",
+  INPUT: "INPUT",
+  ISIN_FORM: "ISIN_FORM",
+  OVERLAY: "OVERLAY",
+  TABLE_ROW: "TABLE_ROW",
+};

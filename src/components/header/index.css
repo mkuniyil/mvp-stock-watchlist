@@ -1,0 +1,36 @@
+.header-container {
+  box-shadow: 0 0 0.625rem 0 rgba(0, 0, 0, 0.2);
+
+  .header {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+
+    .header-title {
+      visibility: hidden;
+    }
+
+    .header-logo {
+      width: 3.75rem;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .header-container {
+    .header {
+      max-width: var(--tablet-max-width);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    .header {
+      padding: 1rem;
+      max-width: var(--mobile-max-width);
+    }
+  }
+}

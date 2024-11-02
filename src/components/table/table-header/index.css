@@ -1,0 +1,42 @@
+.table-header {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr) 2rem;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem;
+  color: white;
+  background-color: black;
+
+  border-radius: 0.5rem 0.5rem 0 0;
+  font-weight: 600;
+
+  .title {
+    justify-self: flex-start;
+  }
+
+  th {
+    justify-self: flex-end;
+  }
+}
+
+@media (max-width: 1024px) {
+  .table-header {
+    grid-template-columns: 1fr 1.66fr 1.67fr 1.67fr 2rem;
+
+    .ask,
+    .bid {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .table-header {
+    grid-template-columns: repeat(2, 1fr) 1.5rem;
+
+    .percentage,
+    .price-difference {
+      display: none;
+    }
+  }
+}
