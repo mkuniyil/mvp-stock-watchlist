@@ -6,14 +6,18 @@ import TableRow from "./TableRow";
 
 const renderComponent = (onDelete: () => void) =>
   render(
-    <TableRow
-      title="test"
-      price="100"
-      onDelete={onDelete}
-      percentage={0}
-      ask="0"
-      bid="0"
-    />
+    <table>
+      <tbody>
+        <TableRow
+          title="test"
+          price="100"
+          onDelete={onDelete}
+          percentage={0}
+          ask="0"
+          bid="0"
+        />
+      </tbody>
+    </table>
   );
 
 describe("TableRow", () => {

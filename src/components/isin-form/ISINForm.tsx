@@ -43,7 +43,7 @@ const ISINForm = () => {
           visible: !!error,
           hidden: !error,
         })}
-        tabIndex={0}
+        role="alert"
         aria-invalid="true"
       >
         <IoInformationCircleOutline size={16} color="red" />
