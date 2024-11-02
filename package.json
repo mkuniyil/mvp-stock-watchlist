@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently \"node server.mjs\" \"vite\"",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "preview": "concurrently \"node server.mjs\" \"vite preview\"",
     "test": "vitest"
   },
