@@ -1,6 +1,11 @@
-import { FC, ReactNode, useCallback, useRef, useState } from "react";
+import { FC, ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import useWebSocket from "../hooks/useWebSocket";
 import { Message, WebSocketContext } from "./WebSocketContext";
+import {
+  getKeysFromLocalstorage,
+  removeKeyFromLocalstorage,
+  saveKeyToLocalstorage,
+} from "../utils/storageUtils";
 
 export const WebSocketProvider: FC<{ children: ReactNode }> = ({
   children,
@@ -51,13 +56,18 @@ export const WebSocketProvider: FC<{ children: ReactNode }> = ({
   }, []);
 
   const subscribe = useCallback(
-    (id: string) => sendMessage(JSON.stringify({ subscribe: id })),
+    (id: string, saveToLocalstorage: boolean) => {
+      sendMessage(JSON.stringify({ subscribe: id }));
+
+      if (saveToLocalstorage) saveKeyToLocalstorage(id);
+    },
     [sendMessage]
   );
 
   const unsubscribe = useCallback(
     (id: string) => {
       sendMessage(JSON.stringify({ unsubscribe: id }));
+      removeKeyFromLocalstorage(id);
       setMessages((prevMessages) => {
         const updatedMessages = new Map(prevMessages);
         updatedMessages.delete(id);
@@ -66,6 +76,15 @@ export const WebSocketProvider: FC<{ children: ReactNode }> = ({
     },
     [sendMessage]
   );
+
+  useEffect(() => {
+    if (!isSocketOpen) return;
+
+    const keys = getKeysFromLocalstorage();
+    keys.forEach((key: string) => {
+      subscribe(key, false);
+    });
+  }, [subscribe, isSocketOpen]);
 
   return (
     <WebSocketContext.Provider

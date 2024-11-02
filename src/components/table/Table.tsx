@@ -1,8 +1,8 @@
+import { useCallback } from "react";
 import { useWebSocketContext } from "../../hooks/useWebSocketContext";
 import "./index.css";
 import TableBody from "./table-body/TableBody";
 import TableHeader from "./table-header/TableHeader";
-import { useCallback } from "react";
 
 const Table = () => {
   const { messages, unsubscribe } = useWebSocketContext();

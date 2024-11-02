@@ -72,11 +72,12 @@ Users can view a list of subscribed stocks and receive live price updates.
 
 ### Task 3: Additional Features
 
-Enhanced user experience with:
+- Persist the saved ISINs of the subscribed stocks when the user reloads the page. Subscriptions are saved in the browser's local storage.
 
-- Accessibility improvements (semantic HTML and ARIA attributes).
-- UI feedback transitions and CSS animations for visual cues.
-- Error handling with alerts for connectivity issues.
+- Enhanced user experience with:
+  - Accessibility improvements (semantic HTML and ARIA attributes).
+  - UI feedback transitions and CSS animations for visual cues.
+  - Error handling with alerts for connectivity issues.
 
 ## Questions
 

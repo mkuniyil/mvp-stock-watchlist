@@ -12,7 +12,7 @@ export interface Message {
 
 interface WebSocketContextType {
   messages: Map<string, Message>;
-  subscribe: (isin: string) => void;
+  subscribe: (isin: string, saveToLocalstorage: boolean) => void;
   unsubscribe: (isin: string) => void;
   isSocketOpen: boolean;
 }

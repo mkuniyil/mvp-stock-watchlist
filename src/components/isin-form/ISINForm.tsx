@@ -25,7 +25,7 @@ const ISINForm = () => {
         return;
       }
 
-      subscribe(value);
+      subscribe(value, true);
       setError(null);
       (e.target as HTMLFormElement).reset();
     },
