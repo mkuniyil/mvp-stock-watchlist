@@ -16,6 +16,10 @@
 
   th {
     justify-self: flex-end;
+
+    &.delete {
+      visibility: hidden;
+    }
   }
 }
 

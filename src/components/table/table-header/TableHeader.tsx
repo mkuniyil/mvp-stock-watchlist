@@ -10,7 +10,7 @@ const TableHeader = () => {
         <th className="percentage">Change %</th>
         <th className="ask">Ask</th>
         <th className="bid">Bid</th>
-        <th className="delete"></th>
+        <th className="delete">Delete</th>
       </tr>
     </thead>
   );

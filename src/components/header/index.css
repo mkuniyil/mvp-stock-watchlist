@@ -9,7 +9,7 @@
     justify-content: space-between;
 
     .header-title {
-      visibility: hidden;
+      opacity: 0;
     }
 
     .header-logo {

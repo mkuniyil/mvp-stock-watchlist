@@ -18,6 +18,7 @@ const Header = () => {
             fill="#000"
           />
         </svg>
+        <h1 className="header-title">Watchlist</h1>
       </header>
     </div>
   );

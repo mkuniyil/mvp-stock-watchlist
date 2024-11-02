@@ -8,7 +8,7 @@ const AppContainer = () => {
   const { isSocketOpen } = useWebSocketContext();
 
   return (
-    <div className="app">
+    <main className="app">
       {!isSocketOpen && <Alert>Connection Lost, Data Not Updated</Alert>}
       <div className="container" data-testid={TEST_IDS.APP}>
         <ISINForm />
@@ -17,7 +17,7 @@ const AppContainer = () => {
           <div className="overlay" data-testid={TEST_IDS.OVERLAY} />
         )}
       </div>
-    </div>
+    </main>
   );
 };
 
