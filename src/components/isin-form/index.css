@@ -14,7 +14,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: red;
+    color: var(--red-800);
     font-size: 0.875rem;
 
     &.visible {
