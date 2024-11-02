@@ -24,19 +24,20 @@ export const WebSocketProvider: FC<{ children: ReactNode }> = ({
 
   const setMessagesCallback = useCallback((message: Message) => {
     setMessages((prevMessages) => {
+      const isin = message.isin.toUpperCase();
       const updatedMessages = new Map(prevMessages);
 
-      if (!updatedMessages.has(message.isin)) {
+      if (!updatedMessages.has(isin)) {
         message.initialPrice = message.price;
       } else {
-        const previousMessage = updatedMessages.get(message.isin);
+        const previousMessage = updatedMessages.get(isin);
 
         if (previousMessage) {
           calculatePriceDifferenceAndPercentage(message, previousMessage);
         }
       }
 
-      updatedMessages.set(message.isin, message);
+      updatedMessages.set(isin, message);
       return updatedMessages;
     });
   }, []);

@@ -70,6 +70,21 @@ describe("<Form />", () => {
     expect(useWebSocketContext().subscribe).not.toHaveBeenCalled();
   });
 
+  test("should show existing error if value provided with lower case is already subscribed & do not call the subscribe method", async () => {
+    renderComponent();
+    const user = userEvent.setup();
+    const value = "de000basf111";
+
+    const elem = screen.getByTestId(TEST_IDS.INPUT);
+    await user.type(elem, value);
+
+    const subscribeButton = screen.getByText("Subscribe");
+    await user.click(subscribeButton);
+
+    expect(screen.getByText(ISIN_ERROR.EXISTING_ISIN)).toBeInTheDocument();
+    expect(useWebSocketContext().subscribe).not.toHaveBeenCalled();
+  });
+
   test("should call subscribe method if value is valid", async () => {
     renderComponent();
     const user = userEvent.setup();

@@ -2,7 +2,7 @@ import { Message } from "../../providers/WebSocketContext";
 import { ISIN_ERROR } from "./constants";
 
 export const isValidIsin = (isin: string) => {
-  const validIsinRegex = /^[A-Z]{2}[A-Z0-9]{10}$/;
+  const validIsinRegex = /^[A-Z]{2}[A-Z0-9]{10}$/i;
   return validIsinRegex.test(isin);
 };
 
@@ -18,7 +18,7 @@ export const validateForm = (
     return ISIN_ERROR.INVALID_ISIN;
   }
 
-  if (messages.has(isinValue)) {
+  if (messages.has(isinValue.toUpperCase())) {
     return ISIN_ERROR.EXISTING_ISIN;
   }
 

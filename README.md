@@ -57,7 +57,7 @@ Ensure [Node.js](https://nodejs.org) (version 16 or higher) is installed.
 Implemented a form to allow users to submit an ISIN and add it to a watchlist with:
 
 - Validation (12-character alphanumeric ISIN)
-- Prevention of duplicate subscriptions
+- Prevention of duplicate subscriptions (case insensitive)
 - Preventing the user from submitting an empty value
 - Preventing the user from adding new subscriptions while the WebSocket is disconnected
 - Inline error message for invalid ISIN
