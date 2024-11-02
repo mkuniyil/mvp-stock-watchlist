@@ -1,16 +1,12 @@
+import { screen } from "@testing-library/react";
+import { Mock, vi } from "vitest";
 import { TEST_IDS } from "../../constants";
 import { useWebSocketContext } from "../../hooks/useWebSocketContext";
 import { generateMessages, renderWithProviders } from "../../utils/testUtils";
-import { screen } from "@testing-library/react";
-import { ReactNode } from "react";
-import { Mock, vi } from "vitest";
 import Table from "./Table";
 
-vi.mock("../../providers/WebSocketProvider", () => ({
+vi.mock("../../hooks/useWebSocketContext", () => ({
   useWebSocketContext: vi.fn(),
-  WebSocketProvider: ({ children }: { children: ReactNode }) => (
-    <div>{children}</div>
-  ),
 }));
 
 const renderComponent = () => renderWithProviders(<Table />);

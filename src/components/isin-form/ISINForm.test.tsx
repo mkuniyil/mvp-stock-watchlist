@@ -1,6 +1,5 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { ReactNode } from "react";
 import { expect, Mock, vi } from "vitest";
 import { TEST_IDS } from "../../constants";
 import { useWebSocketContext } from "../../hooks/useWebSocketContext";
@@ -8,11 +7,8 @@ import { renderWithProviders } from "../../utils/testUtils";
 import { ISIN_ERROR } from "./constants";
 import ISINForm from "./ISINForm";
 
-vi.mock("../../providers/WebSocketProvider", () => ({
+vi.mock("../../hooks/useWebSocketContext", () => ({
   useWebSocketContext: vi.fn(),
-  WebSocketProvider: ({ children }: { children: ReactNode }) => (
-    <div>{children}</div>
-  ),
 }));
 
 const renderComponent = () => renderWithProviders(<ISINForm />);
