@@ -169,7 +169,7 @@
       display: block;
       width: fit-content;
       justify-self: flex-end;
-      margin-left: 0.125rem;
+      margin-top: 0.125rem;
       background: var(--red-700);
 
       &:hover {

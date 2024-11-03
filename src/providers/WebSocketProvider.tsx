@@ -92,7 +92,7 @@ export const WebSocketProvider: FC<{ children: ReactNode }> = ({
     keys.forEach((key: string) => {
       subscribe(key, false);
     });
-  }, [subscribe, socketStatus]);
+  }, [socketStatus]);
 
   return (
     <WebSocketContext.Provider

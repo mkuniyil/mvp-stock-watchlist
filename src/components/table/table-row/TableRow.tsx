@@ -54,11 +54,11 @@ const TableRow = ({
           </div>
           <div className="ask-bid-container">
             <div className={classNames("quote", { transition: fadeOut })}>
-              <span className="text">ASK:</span>
+              <span className="text">ask:</span>
               {ask}
             </div>
             <div className={classNames("quote", { transition: fadeOut })}>
-              <span className="text">BID:</span>
+              <span className="text">bid:</span>
               {bid}
             </div>
           </div>
