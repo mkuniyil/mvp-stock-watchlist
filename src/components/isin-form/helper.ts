@@ -2,7 +2,7 @@ import { Message } from "../../providers/WebSocketContext";
 import { ISIN_ERROR } from "./constants";
 
 export const isValidIsin = (isin: string) => {
-  const validIsinRegex = /^[A-Z]{2}[A-Z0-9]{10}$/i;
+  const validIsinRegex = /^[A-Z]{2}[A-Z0-9]{9}[0-9]$/i;
   return validIsinRegex.test(isin);
 };
 

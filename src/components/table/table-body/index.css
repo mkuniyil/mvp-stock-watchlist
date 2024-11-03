@@ -1,4 +1,8 @@
 .table-body {
+  border-radius: 0 0 0.5rem 0.5rem;
+  border: 1px solid var(--gray-300);
+  border-top: none;
+
   .row {
     border-top: 1px solid var(--gray-200);
 
