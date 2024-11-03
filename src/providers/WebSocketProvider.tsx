@@ -13,6 +13,7 @@ export const WebSocketProvider: FC<{ children: ReactNode }> = ({
   const ws = useRef<WebSocket | null>(null);
   const [socketStatus, setSocketStatus] = useState<number | null>(null);
   const [messages, setMessages] = useState<Map<string, Message>>(new Map());
+  const [isUnsubscribing, setIsUnsubscribing] = useState<boolean>(false);
 
   const calculatePriceDifferenceAndPercentage = (
     message: Message,
@@ -27,25 +28,30 @@ export const WebSocketProvider: FC<{ children: ReactNode }> = ({
       100;
   };
 
-  const setMessagesCallback = useCallback((message: Message) => {
-    setMessages((prevMessages) => {
-      const isin = message.isin.toUpperCase();
-      const updatedMessages = new Map(prevMessages);
+  const setMessagesCallback = useCallback(
+    (message: Message) => {
+      if (isUnsubscribing) return;
 
-      if (!updatedMessages.has(isin)) {
-        message.initialPrice = message.price;
-      } else {
-        const previousMessage = updatedMessages.get(isin);
+      setMessages((prevMessages) => {
+        const isin = message.isin.toUpperCase();
+        const updatedMessages = new Map(prevMessages);
 
-        if (previousMessage) {
-          calculatePriceDifferenceAndPercentage(message, previousMessage);
+        if (!updatedMessages.has(isin)) {
+          message.initialPrice = message.price;
+        } else {
+          const previousMessage = updatedMessages.get(isin);
+
+          if (previousMessage) {
+            calculatePriceDifferenceAndPercentage(message, previousMessage);
+          }
         }
-      }
 
-      updatedMessages.set(isin, message);
-      return updatedMessages;
-    });
-  }, []);
+        updatedMessages.set(isin, message);
+        return updatedMessages;
+      });
+    },
+    [isUnsubscribing]
+  );
 
   useWebSocket(ws, setSocketStatus, setMessagesCallback);
 
@@ -66,6 +72,7 @@ export const WebSocketProvider: FC<{ children: ReactNode }> = ({
 
   const unsubscribe = useCallback(
     (id: string) => {
+      setIsUnsubscribing(true);
       setMessages((prevMessages) => {
         const updatedMessages = new Map(prevMessages);
         updatedMessages.delete(id);
@@ -73,6 +80,7 @@ export const WebSocketProvider: FC<{ children: ReactNode }> = ({
       });
       sendMessage(JSON.stringify({ unsubscribe: id }));
       removeKeyFromLocalstorage(id);
+      setIsUnsubscribing(false);
     },
     [sendMessage]
   );
