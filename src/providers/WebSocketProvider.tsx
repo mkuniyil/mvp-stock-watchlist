@@ -66,12 +66,12 @@ export const WebSocketProvider: FC<{ children: ReactNode }> = ({
 
   const unsubscribe = useCallback(
     (id: string) => {
-      sendMessage(JSON.stringify({ unsubscribe: id }));
       setMessages((prevMessages) => {
         const updatedMessages = new Map(prevMessages);
         updatedMessages.delete(id);
         return updatedMessages;
       });
+      sendMessage(JSON.stringify({ unsubscribe: id }));
       removeKeyFromLocalstorage(id);
     },
     [sendMessage]
