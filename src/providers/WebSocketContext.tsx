@@ -14,7 +14,7 @@ interface WebSocketContextType {
   messages: Map<string, Message>;
   subscribe: (isin: string, saveToLocalstorage: boolean) => void;
   unsubscribe: (isin: string) => void;
-  isSocketOpen: boolean;
+  socketStatus: number | null;
 }
 
 export const WebSocketContext = createContext<WebSocketContextType | null>(

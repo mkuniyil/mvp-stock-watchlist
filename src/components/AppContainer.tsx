@@ -5,15 +5,19 @@ import Table from "./table/Table";
 import Alert from "./ui/alert/Alert";
 
 const AppContainer = () => {
-  const { isSocketOpen } = useWebSocketContext();
+  const { socketStatus } = useWebSocketContext();
+
+  const displayOverlay = !(
+    socketStatus === WebSocket.OPEN || socketStatus === null
+  );
 
   return (
     <main className="app">
-      {!isSocketOpen && <Alert>Connection Lost, Data Not Updated</Alert>}
+      {displayOverlay && <Alert>Connection Lost, Data Not Updated</Alert>}
       <div className="container" data-testid={TEST_IDS.APP}>
         <ISINForm />
         <Table />
-        {!isSocketOpen && (
+        {displayOverlay && (
           <div className="overlay" data-testid={TEST_IDS.OVERLAY} />
         )}
       </div>

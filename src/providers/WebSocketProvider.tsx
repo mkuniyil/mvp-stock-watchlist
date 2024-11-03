@@ -11,7 +11,7 @@ export const WebSocketProvider: FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const ws = useRef<WebSocket | null>(null);
-  const [isSocketOpen, setIsSocketOpen] = useState<boolean>(true);
+  const [socketStatus, setSocketStatus] = useState<number | null>(null);
   const [messages, setMessages] = useState<Map<string, Message>>(new Map());
 
   const calculatePriceDifferenceAndPercentage = (
@@ -47,7 +47,7 @@ export const WebSocketProvider: FC<{ children: ReactNode }> = ({
     });
   }, []);
 
-  useWebSocket(ws, setIsSocketOpen, setMessagesCallback);
+  useWebSocket(ws, setSocketStatus, setMessagesCallback);
 
   const sendMessage = useCallback((message: string) => {
     if (ws.current && ws.current.readyState === WebSocket.OPEN) {
@@ -78,17 +78,17 @@ export const WebSocketProvider: FC<{ children: ReactNode }> = ({
   );
 
   useEffect(() => {
-    if (!isSocketOpen) return;
+    if (socketStatus === null) return;
 
     const keys = getKeysFromLocalstorage();
     keys.forEach((key: string) => {
       subscribe(key, false);
     });
-  }, [subscribe, isSocketOpen]);
+  }, [subscribe, socketStatus]);
 
   return (
     <WebSocketContext.Provider
-      value={{ messages, subscribe, unsubscribe, isSocketOpen }}
+      value={{ messages, subscribe, unsubscribe, socketStatus }}
     >
       {children}
     </WebSocketContext.Provider>

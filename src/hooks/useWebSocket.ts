@@ -5,26 +5,26 @@ const SOCKET_URL = "ws://localhost:8425";
 
 const useWebSocket = (
   ws: MutableRefObject<WebSocket | null>,
-  setIsSocketOpen: (isOpen: boolean) => void,
+  setSocketStatus: (status: number) => void,
   setMessagesCallback: (message: Message) => void
 ) => {
   useEffect(() => {
     ws.current = new WebSocket(SOCKET_URL);
 
-    ws.current.onopen = () => setIsSocketOpen(true);
+    ws.current.onopen = () => setSocketStatus(WebSocket.OPEN);
 
     ws.current.onmessage = (event: MessageEvent) =>
       setMessagesCallback(JSON.parse(event.data));
 
     ws.current.onerror = (error: Event) => {
       console.error("WebSocket error:", error);
-      setIsSocketOpen(false);
+      setSocketStatus(WebSocket.CLOSED);
     };
 
-    ws.current.onclose = () => setIsSocketOpen(false);
+    ws.current.onclose = () => setSocketStatus(WebSocket.CLOSED);
 
     return () => ws.current?.close();
-  }, [setIsSocketOpen, setMessagesCallback, ws]);
+  }, [setSocketStatus, setMessagesCallback, ws]);
 };
 
 export default useWebSocket;
