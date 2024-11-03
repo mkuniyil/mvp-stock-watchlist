@@ -96,6 +96,6 @@ describe("<Form />", () => {
     const subscribeButton = screen.getByText("Subscribe");
     await user.click(subscribeButton);
 
-    expect(useWebSocketContext().subscribe).toHaveBeenCalledWith(value);
+    expect(useWebSocketContext().subscribe).toHaveBeenCalledWith(value, true);
   });
 });

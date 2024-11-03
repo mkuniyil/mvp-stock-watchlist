@@ -10,13 +10,12 @@ This project is a frontend application for managing stock subscriptions using **
 - **Vite**: Fast build tool and development server.
 - **TypeScript**: Application logic and WebSocket handling.
 - **CSS**: Custom styles for UI components without external UI libraries.
-- **HTML5 (Semantic)**: Structured HTML elements for accessibility and usability.
+- **HTML5**: Structured HTML elements for accessibility and usability.
 - **WebSocket**: Real-time communication with a backend server for stock price updates.
 
 ## Testing
 
 - **Unit Testing**: Implemented with React Testing Library and Vitest.
-- **Manual Testing**: Tested on both mobile and desktop screen sizes to ensure responsiveness and user experience.
 
 ## Setup Instructions
 
@@ -56,7 +55,7 @@ Ensure [Node.js](https://nodejs.org) (version 16 or higher) is installed.
 
 Implemented a form to allow users to submit an ISIN and add it to a watchlist with:
 
-- Validation (12-character alphanumeric ISIN)
+- Validation (A two letter country code, a nine character alpha-numeric national security identifier, and a single check digit)
 - Prevention of duplicate subscriptions (case insensitive)
 - Preventing the user from submitting an empty value
 - Preventing the user from adding new subscriptions while the WebSocket is disconnected
@@ -75,7 +74,6 @@ Users can view a list of subscribed stocks and receive live price updates.
 - Persist the saved ISINs of the subscribed stocks when the user reloads the page. Subscriptions are saved in the browser's local storage.
 
 - Enhanced user experience with:
-  - Accessibility improvements (semantic HTML and ARIA attributes).
   - UI feedback transitions and CSS animations for visual cues.
   - Error handling with alerts for connectivity issues.
 
