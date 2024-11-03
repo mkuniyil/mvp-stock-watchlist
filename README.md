@@ -105,3 +105,9 @@ With multiple subscriptions, potential issues include:
 To improve performance, I’d consider:
 
 - Using a virtualized list for efficient rendering of a large number of stocks. This approach will render only the visible items in the viewport, improving the performance and reducing the memory usage.
+
+## Things to improve
+
+- Add commonly used ISINs to add as badges.
+- Add a loading state for the WebSocket connection.
+- Add a skeleton template while loading

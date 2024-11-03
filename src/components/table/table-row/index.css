@@ -33,6 +33,7 @@
       cursor: pointer;
       background: none;
       border: none;
+      padding: 0;
     }
   }
 
@@ -198,6 +199,10 @@
       flex-direction: column;
       gap: 0.25rem;
       align-items: flex-end;
+
+      .price {
+        font-size: 1.125rem;
+      }
 
       .change-ask-bid-container {
         display: flex;

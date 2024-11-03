@@ -8,11 +8,15 @@
   font-family: inherit;
   cursor: pointer;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background: var(--gray-900);
   }
 
   &:active {
     background: black;
+  }
+
+  &:disabled {
+    opacity: 0.3;
   }
 }

@@ -11,7 +11,8 @@ vi.mock("../../hooks/useWebSocketContext", () => ({
   useWebSocketContext: vi.fn(),
 }));
 
-const renderComponent = () => renderWithProviders(<ISINForm />);
+const renderComponent = () =>
+  renderWithProviders(<ISINForm disabled={false} />);
 
 describe("<Form />", () => {
   beforeEach(() => {

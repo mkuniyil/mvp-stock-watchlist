@@ -6,6 +6,7 @@ const Input = ({
   id,
   name,
   required,
+  disabled,
   placeholder,
   onBlur,
 }: InputHTMLAttributes<HTMLInputElement>) => {
@@ -19,6 +20,7 @@ const Input = ({
       aria-required={required}
       placeholder={placeholder}
       onBlur={onBlur}
+      disabled={disabled}
       data-testid={TEST_IDS.INPUT}
     />
   );

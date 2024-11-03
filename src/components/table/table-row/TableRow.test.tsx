@@ -32,7 +32,7 @@ describe("TableRow", () => {
     renderComponent(onDeleteMock);
     const user = userEvent.setup();
 
-    const row = screen.getByRole("button");
+    const row = screen.getByTestId(TEST_IDS.DELETE_BUTTON);
     await user.click(row);
 
     expect(onDeleteMock).toHaveBeenCalled();

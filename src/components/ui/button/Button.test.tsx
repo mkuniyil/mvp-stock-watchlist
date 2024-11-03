@@ -6,7 +6,7 @@ import Button from "./Button";
 
 const renderComponent = (onClick: () => void) =>
   render(
-    <Button type="submit" onClick={onClick}>
+    <Button type="submit" onClick={onClick} testId={TEST_IDS.BUTTON}>
       Submit
     </Button>
   );

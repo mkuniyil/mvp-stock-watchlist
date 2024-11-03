@@ -7,19 +7,14 @@ import Alert from "./ui/alert/Alert";
 const AppContainer = () => {
   const { socketStatus } = useWebSocketContext();
 
-  const displayOverlay = !(
-    socketStatus === WebSocket.OPEN || socketStatus === null
-  );
+  const disabled = !(socketStatus === WebSocket.OPEN || socketStatus === null);
 
   return (
     <main className="app">
-      {displayOverlay && <Alert>Connection Lost, Data Not Updated</Alert>}
+      {disabled && <Alert>Connection Lost, Data Not Updated</Alert>}
       <div className="container" data-testid={TEST_IDS.APP}>
-        <ISINForm />
-        <Table />
-        {displayOverlay && (
-          <div className="overlay" data-testid={TEST_IDS.OVERLAY} />
-        )}
+        <ISINForm disabled={disabled} />
+        <Table disabled={disabled} />
       </div>
     </main>
   );

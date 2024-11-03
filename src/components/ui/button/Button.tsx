@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import { ButtonHTMLAttributes } from "react";
-import { TEST_IDS } from "../../../constants";
 import "./index.css";
 
 const Button = ({
@@ -9,14 +8,20 @@ const Button = ({
   children,
   className,
   ariaLabel,
-}: ButtonHTMLAttributes<HTMLButtonElement> & { ariaLabel?: string }) => {
+  disabled,
+  testId,
+}: ButtonHTMLAttributes<HTMLButtonElement> & {
+  ariaLabel?: string;
+  testId?: string;
+}) => {
   return (
     <button
       type={type}
       onClick={onClick}
       className={classNames("button", className)}
       aria-label={ariaLabel}
-      data-testid={TEST_IDS.BUTTON}
+      data-testid={testId}
+      disabled={disabled}
     >
       {children}
     </button>

@@ -8,7 +8,7 @@ import Input from "../ui/input/Input";
 import { validateForm } from "./helper";
 import "./index.css";
 
-const ISINForm = () => {
+const ISINForm = ({ disabled }: { disabled: boolean }) => {
   const { messages, subscribe } = useWebSocketContext();
   const [error, setError] = useState<string | null>(null);
 
@@ -35,8 +35,15 @@ const ISINForm = () => {
   return (
     <div className="form-container" data-testid={TEST_IDS.ISIN_FORM}>
       <form className="content" onSubmit={handleSubmit}>
-        <Input id="isin" name="isin" placeholder="ISIN (e.g. US0378331005)" />
-        <Button type="submit">Subscribe</Button>
+        <Input
+          id="isin"
+          name="isin"
+          placeholder="ISIN (e.g. US0378331005)"
+          disabled={disabled}
+        />
+        <Button type="submit" disabled={disabled}>
+          Subscribe
+        </Button>
       </form>
       <div
         className={classNames("error", {
@@ -46,7 +53,7 @@ const ISINForm = () => {
         role="alert"
         aria-invalid="true"
       >
-        <IoInformationCircleOutline size={16} color="red" />
+        <IoInformationCircleOutline size={16} color="var(--red-800)" />
         <span>{error}</span>
       </div>
     </div>

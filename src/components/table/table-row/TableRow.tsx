@@ -73,9 +73,14 @@ const TableRow = ({
       </td>
 
       <td className="delete-container">
-        <button className="delete" onClick={onDelete} aria-label="Unsubscribe">
-          <IoMdClose size={20} />
-        </button>
+        <Button
+          className="delete"
+          onClick={onDelete}
+          ariaLabel="Unsubscribe"
+          testId={TEST_IDS.DELETE_BUTTON}
+        >
+          <IoMdClose size={20} color="var(--gray-900)" />
+        </Button>
       </td>
     </tr>
   );
