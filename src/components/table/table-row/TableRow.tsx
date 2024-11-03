@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { TEST_IDS } from "../../../constants";
+import Button from "../../ui/button/Button";
 import Percentage from "./components/Percentage";
 import Price from "./components/Price";
 import PriceDifference from "./components/PriceDifference";
@@ -61,6 +62,13 @@ const TableRow = ({
               {bid}
             </div>
           </div>
+          <Button
+            className="delete-mobile"
+            onClick={onDelete}
+            ariaLabel="Unsubscribe"
+          >
+            Unsubscribe
+          </Button>
         </div>
       </td>
 

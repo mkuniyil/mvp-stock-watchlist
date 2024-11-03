@@ -25,10 +25,11 @@
 
 @media (max-width: 1024px) {
   .table-header {
-    grid-template-columns: 1fr 1.66fr 1.67fr 1.67fr 2rem;
+    grid-template-columns: 1fr 1.66fr 1.67fr 1.67fr;
 
     .ask,
-    .bid {
+    .bid,
+    .delete {
       display: none;
     }
   }
@@ -36,7 +37,7 @@
 
 @media (max-width: 768px) {
   .table-header {
-    grid-template-columns: repeat(2, 1fr) 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
 
     .percentage,
     .price-difference {

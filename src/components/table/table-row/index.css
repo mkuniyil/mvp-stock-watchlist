@@ -36,6 +36,10 @@
     }
   }
 
+  .delete-mobile {
+    display: none;
+  }
+
   .change-ask-bid-container {
     gap: 0.25rem;
 
@@ -132,7 +136,7 @@
 
 @media (max-width: 1024px) {
   .row {
-    grid-template-columns: 1fr 5fr 2rem;
+    grid-template-columns: 1fr 5fr;
 
     .price-container {
       display: grid;
@@ -154,12 +158,34 @@
         }
       }
     }
+
+    .delete-container {
+      .delete {
+        display: none;
+      }
+    }
+
+    .delete-mobile {
+      display: block;
+      width: fit-content;
+      justify-self: flex-end;
+      margin-left: 0.125rem;
+      background: var(--red-700);
+
+      &:hover {
+        background: var(--red-800);
+      }
+
+      &:active {
+        background: var(--red-800);
+      }
+    }
   }
 }
 
 @media (max-width: 768px) {
   .row {
-    grid-template-columns: repeat(2, 1fr) 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
 
     > .price,
     > .change-container,
@@ -203,12 +229,17 @@
         }
       }
     }
+
+    .delete-mobile {
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+    }
   }
 }
 
 @media (max-width: 480px) {
   .row {
-    grid-template-columns: 1fr 1fr 1rem;
+    grid-template-columns: 1fr 1fr;
     gap: 0.25rem;
     padding: 0.5rem;
   }
