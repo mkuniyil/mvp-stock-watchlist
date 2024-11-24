@@ -1,4 +1,4 @@
-# Trade Republic Coding Challenge
+# Stock watchlist
 
 ## Overview
 
